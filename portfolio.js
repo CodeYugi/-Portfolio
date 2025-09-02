@@ -1,4 +1,20 @@
 
+const themeBtn = document.getElementById("theme-toggle");
+
+function switchTheme() {
+  document.body.classList.toggle("dark");
+}
+
+if (themeBtn) {
+  themeBtn.addEventListener("click", () => {
+    if (!document.startViewTransition) {
+      switchTheme();
+      return;
+    }
+    document.startViewTransition(() => switchTheme());
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
 
     const navLinks = document.querySelectorAll('.nav-link');

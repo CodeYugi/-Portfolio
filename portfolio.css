@@ -1138,3 +1138,31 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+::view-transition-group(root) {
+  animation-timing-function: var(--expo-in);
+}
+
+::view-transition-new(root) {
+  background: red;
+  mask: url('https://media.tenor.com/cyORI7kwShQAAAAi/shigure-ui-dance.gif') center / 0 no-repeat;
+  -webkit-mask: url('https://media.tenor.com/cyORI7kwShQAAAAi/shigure-ui-dance.gif') center / 0 no-repeat;
+  animation: scaleDance 3s;
+}
+
+::view-transition-old(root),
+.dark::view-transition-old(root) {
+  animation: scaleDance 3s;
+}
+
+@keyframes scaleDance {
+  0%   { mask-size: 0; -webkit-mask-size: 0; }
+  10%  { mask-size: 50vmax; -webkit-mask-size: 50vmax; }
+  90%  { mask-size: 50vmax; -webkit-mask-size: 50vmax; }
+  100% { mask-size: 2000vmax; -webkit-mask-size: 2000vmax; }
+}
+
+body.dark {
+  background: #000;
+  color: #fff;
+}
